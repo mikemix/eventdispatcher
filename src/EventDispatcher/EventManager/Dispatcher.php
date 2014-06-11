@@ -7,7 +7,13 @@ use Zend\Mvc\MvcEvent;
 
 class Dispatcher implements ListenerAggregateInterface
 {
+    protected $config = array();
     protected $listeners = array();
+
+    public function __construct(array $config)
+    {
+        $this->config = $config;
+    }
 
     public function attach(EventManagerInterface $events)
     {
