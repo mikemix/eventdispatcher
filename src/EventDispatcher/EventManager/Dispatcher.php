@@ -3,11 +3,30 @@ namespace EventDispatcher\EventManager;
 
 use Zend\EventManager\EventManagerInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Mvc\MvcEvent;
 
 class Dispatcher
 {
+    /**
+     * List of supported events.
+     *
+     * @var array
+     */
+    protected $events = array(
+        'bootstrap', 'dispatch', 'dispatch.error', 'finish', 'render', 'render.error', 'route'
+    );
+
+    /**
+     * List of event listeners from the configuration.
+     *
+     * @var array
+     */
     protected $config = array();
+
+    /**
+     * The service locator.
+     *
+     * @var \Zend\ServiceManager\ServiceLocatorInterface
+     */
     protected $sm;
 
     public function __construct(array $config, ServiceLocatorInterface $sm)
@@ -18,12 +37,8 @@ class Dispatcher
     
     public function attachListeners(EventManagerInterface $eventManager)
     {
-        $events = array(
-            'bootstrap', 'dispatch', 'dispatch.error', 'finish', 'render', 'render.error', 'route'
-        );
-        
-        foreach ($events as $event) {
-            if (isset($this->config($event)) && count($this->config[$event]) > 0) {
+        foreach ($this->events as $event) {
+            if (isset($this->config[$event]) && count($this->config[$event]) > 0) {
                 $this->attachFor($eventManager, $event);
             }
         }
