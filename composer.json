@@ -1,0 +1,23 @@
+{
+    "name": "mikemix/eventdispatcher",
+    "description": "Easily attach to ZF2 events",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "zf2",
+        "eventmanager",
+        "events"
+    ],
+    "homepage": "https://github.com/mikemix/EventDispatcher",
+    "require": {
+        "php": ">=5.3.23",
+        "zendframework/zend-mvc": "~2.3",
+        "zendframework/zend-servicemanager": "~2.3",
+        "zendframework/zend-eventmanager": "~2.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "EventDispatcher\\": "src/"
+        }
+    }
+}
