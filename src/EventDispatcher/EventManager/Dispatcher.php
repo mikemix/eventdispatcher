@@ -23,7 +23,7 @@ class Dispatcher
         );
         
         foreach ($events as $event) {
-            if (isset($this->config($event)) && count($this->config[$event]) > 0) {
+            if (isset($this->config[$event]) && count($this->config[$event]) > 0) {
                 $this->attachFor($eventManager, $event);
             }
         }
