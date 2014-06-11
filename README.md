@@ -16,64 +16,60 @@ Congratulations. You are done and the library has been successfully installed (h
 Example configuration
 ---------------------
 
-```config/autoload/event_dispatcher.config.php```
+File ```config/autoload/event_dispatcher.config.php```
 
 ```php
-    <?php
-    
-    return array(
-        'event_dispatcher' => array(
-            'dispatch' => array(
-                // dispatch listeners here
-                'myDispatchListener'       # <----------------- NOTICE
-            ),
-            'dispatch.error' => array(
-                // dispatch.error listeners here
-            ),
-            'finish' => array(
-                // finish listeners here
-            ),
-            'render' => array(
-                // render listeners here
-            ),
-            'render.error' => array(
-                // render.error listeners here
-            ),
-            'route' => array(
-                // route listeners here
-            ),
+return array(
+    'event_dispatcher' => array(
+        'dispatch' => array(
+            // dispatch listeners here
+            'myDispatchListener'       # <----------------- NOTICE
         ),
-    );
-```
-
-```module/Application/config/module.config.php```
-
-```php
-    <?php
-    
-    // ...
-    'service_manager' => array(
-        // ...
-        
-        'invokables' => array(
-            'myDispatchListener' => 'Application\Listener\DispatchListener',
+        'dispatch.error' => array(
+            // dispatch.error listeners here
+        ),
+        'finish' => array(
+            // finish listeners here
+        ),
+        'render' => array(
+            // render listeners here
+        ),
+        'render.error' => array(
+            // render.error listeners here
+        ),
+        'route' => array(
+            // route listeners here
         ),
     ),
+);
 ```
 
-```module/Application/src/Application/Listener/DispatchListener.php```
+File ```module/Application/config/module.config.php```
 
 ```php
-    <?php
-    namespace Application\Listener;
+// ...
+'service_manager' => array(
+    // ...
     
-    use EventDispatcher\Listener\ListenerInterface;
-    
-    class DispatchListener implements ListenerInterface
+    'invokables' => array(
+        'myDispatchListener' => 'Application\Listener\DispatchListener',
+    ),
+),
+```
+
+File ```module/Application/src/Application/Listener/DispatchListener.php```
+
+```php
+<?php
+namespace Application\Listener;
+
+use EventDispatcher\Listener\ListenerInterface;
+
+class DispatchListener implements ListenerInterface
+{
+    public function onEvent(EventInterface $event)
     {
-        public function onEvent(EventInterface $event)
-        {
-            printf('Well hello, a %s event was called', $event->getName());
-        }
+        printf('Well hello, a %s event was called', $event->getName());
     }
+}
 ```
