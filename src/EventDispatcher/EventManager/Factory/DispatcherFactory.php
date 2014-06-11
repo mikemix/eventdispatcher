@@ -12,7 +12,7 @@ class DispatcherFactory implements FactoryInterface
         $zfConfig = $sm->get('config');
         $config = isset($zfConfig['event_dispatcher']) ? $zfConfig['event_dispatcher'] : array();
     
-        $service = new Dispatcher($config);
+        $service = new Dispatcher($config, $sm);
         return $service;
     }
 }
