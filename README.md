@@ -1,7 +1,7 @@
 EventDispatcher
 ===============
 
-Easily subscribe to ZF2's MVC events using the configuration.
+Easily attach listeners to ZF2's MVC events.
 
 Installation
 ------------
