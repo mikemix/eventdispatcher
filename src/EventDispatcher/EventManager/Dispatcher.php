@@ -32,8 +32,6 @@ class Dispatcher
                 $priority = 1;
             }
             
-            $listener = $this->sm->get($serviceName);
-            
             $sm = $this->sm;
             $eventManager->attach($eventName, function () use ($sm, $serviceName, $eventManager) {
                 $listener = $sm->get($serviceName);
