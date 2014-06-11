@@ -1,0 +1,24 @@
+<?php
+
+return array(
+    'event_dispatcher' => array(
+        'dispatch' => array(
+            // dispatch listeners here
+        ),
+        'dispatch.error' => array(
+            // dispatch.error listeners here
+        ),
+        'finish' => array(
+            // finish listeners here
+        ),
+        'render' => array(
+            // render listeners here
+        ),
+        'render.error' => array(
+            // render.error listeners here
+        ),
+        'route' => array(
+            // route listeners here
+        ),
+    ),
+);
