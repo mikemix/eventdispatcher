@@ -16,8 +16,9 @@ Congratulations. You are done and the library has been successfully installed (h
 Example configuration
 ---------------------
 
+```config/autoload/event_dispatcher.config.php```
+
     <?php
-    // config/autoload/event_dispatcher.config.php
     
     return array(
         'event_dispatcher' => array(
@@ -42,3 +43,31 @@ Example configuration
             ),
         ),
     );
+    
+```module/Application/config/module.config.php```
+
+    <?php
+    
+    // ...
+    'service_manager' => array(
+        // ...
+        
+        'invokables' => array(
+            'myDispatchListener' => 'Application\Listener\DispatchListener',
+        ),
+    ),
+
+```module/Application/src/Application/Listener/DispatchListener.php```
+
+    <?php
+    namespace Application\Listener;
+    
+    use EventDispatcher\Listener\ListenerInterface;
+    
+    class DispatchListener implements ListenerInterface
+    {
+        public function onEvent(EventInterface $event)
+        {
+            printf('Well hello, a %s event was called', $event->getName());
+        }
+    }
