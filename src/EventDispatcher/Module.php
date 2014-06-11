@@ -11,15 +11,19 @@ class Module
         $eventManager = $app->getEventManager();
         $sm           = $app->getServiceManager();
 
-        $dispatcher = $sm->get('mikemix.event_dispatcher');
+        $dispatcher = $sm->get('mikemix.dispatcher');
         $eventManager->attachAggregate($dispatcher);
     }
 
-    public function getConfig()
+    public function getServiceConfig()
     {
-        return include __DIR__ . '/../../config/module.config.php';
+        return array(
+            'factories' => array(
+                'mikemix.dispatcher' => 'EventDispatcher\EventManager\Factory\DispatcherFactory',
+            ),
+        );
     }
-
+    
     public function getAutoloaderConfig()
     {
         return array(
