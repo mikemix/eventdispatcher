@@ -18,8 +18,14 @@ class Dispatcher
     
     public function attachListeners(EventManagerInterface $eventManager)
     {
-        if (isset($this->config[MvcEvent::EVENT_DISPATCH])) {
-            $this->attachFor($eventManager, MvcEvent::EVENT_DISPATCH);
+        $events = array(
+            'bootstrap', 'dispatch', 'dispatch.error', 'finish', 'render', 'render.error', 'route'
+        );
+        
+        foreach ($events as $event) {
+            if (isset($this->config($event)) && count($this->config[$event]) > 0) {
+                $this->attachFor($eventManager, $event);
+            }
         }
     }
 
