@@ -1,33 +1,39 @@
 <?php
 namespace EventDispatcher\EventManager;
 
-use Zend\EventManager\ListenerAggregateInterface;
 use Zend\EventManager\EventManagerInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Mvc\MvcEvent;
 
-class Dispatcher implements ListenerAggregateInterface
+class Dispatcher
 {
     protected $config = array();
-    protected $listeners = array();
+    protected $sm;
 
-    public function __construct(array $config)
+    public function __construct(array $config, ServiceLocatorInterface $sm)
     {
         $this->config = $config;
+        $this->sm = $sm;
+    }
+    
+    public function attachListeners(EventManagerInterface $eventManager)
+    {
+        if (isset($this->config[MvcEvent::EVENT_DISPATCH])) {
+            $this->attachFor($eventManager, MvcEvent::EVENT_DISPATCH);
+        }
     }
 
-    public function attach(EventManagerInterface $events)
+    protected function attachFor(EventManagerInterface $eventManager, $eventName)
     {
-        $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH, function () use ($events) {
-            
-        });
-    }
-
-    function detach(EventManagerInterface $events)
-    {
-        foreach ($this->listeners as $index => $listener) {
-            if ($e->detach($listener)) {
-                unset($this->listeners[$index]);
+        foreach ($this->config['dispatch'] as $serviceName => $priority) {
+            if (is_numeric($serviceName)) {
+                // not an associative array
+                $serviceName = $priority;
+                $priority = 1;
             }
+            
+            $listener = $this->sm->get($serviceName);
+            $eventManager->attach($eventName, array($listener, 'attach'), $priority)
         }
     }
 }
