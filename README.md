@@ -73,3 +73,11 @@ class DispatchListener implements ListenerInterface
     }
 }
 ```
+
+
+Valuable resources about ZF2 events on the net
+----------------------------------------------
+
+   * http://framework.zend.com/manual/2.3/en/modules/zend.mvc.mvc-event.html
+   * http://www.michaelgallego.fr/blog/2013/05/12/understanding-the-zend-framework-2-event-manager/
+   * http://mwop.net/blog/266-Using-the-ZF2-EventManager.html
