@@ -25,7 +25,7 @@ class Dispatcher
 
     protected function attachFor(EventManagerInterface $eventManager, $eventName)
     {
-        foreach ($this->config['dispatch'] as $serviceName => $priority) {
+        foreach ($this->config[$eventName] as $serviceName => $priority) {
             if (is_numeric($serviceName)) {
                 // not an associative array
                 $serviceName = $priority;
