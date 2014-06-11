@@ -57,7 +57,7 @@ File ```module/Application/config/module.config.php```
 ),
 ```
 
-File ```module/Application/src/Application/Listener/DispatchListener.php```. For your convienience and type hinting for the editor of your choice, you can make the listener implement the ListenerInterface interface, but you are not obliged to. Just make sure an ```onEvent()``` method is available for calling.
+File ```module/Application/src/Application/Listener/DispatchListener.php```. For your convienience and type hinting in the editor of your choice, you can make listener implement the ListenerInterface interface, but you are not obliged to. Just make sure an ```onEvent()``` method is callable.
 
 ```php
 <?php
