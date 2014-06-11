@@ -43,7 +43,7 @@ Example configuration
             ),
         ),
     );
-
+    ?>
 
 ```module/Application/config/module.config.php```
 
