@@ -18,6 +18,7 @@ Example configuration
 
 ```config/autoload/event_dispatcher.config.php```
 
+```php
     <?php
     
     return array(
@@ -43,10 +44,11 @@ Example configuration
             ),
         ),
     );
-    ?>
+```
 
 ```module/Application/config/module.config.php```
 
+```php
     <?php
     
     // ...
@@ -57,10 +59,11 @@ Example configuration
             'myDispatchListener' => 'Application\Listener\DispatchListener',
         ),
     ),
-
+```
 
 ```module/Application/src/Application/Listener/DispatchListener.php```
 
+```php
     <?php
     namespace Application\Listener;
     
@@ -73,3 +76,4 @@ Example configuration
             printf('Well hello, a %s event was called', $event->getName());
         }
     }
+```
