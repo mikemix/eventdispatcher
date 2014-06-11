@@ -8,7 +8,7 @@
         "eventmanager",
         "events"
     ],
-    "homepage": "https://github.com/mikemix/EventDispatcher",
+    "homepage": "https://github.com/mikemix/eventdispatcher",
     "require": {
         "php": ">=5.3.23",
         "zendframework/zend-mvc": "~2.3",
