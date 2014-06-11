@@ -43,7 +43,8 @@ Example configuration
             ),
         ),
     );
-    
+
+
 ```module/Application/config/module.config.php```
 
     <?php
@@ -56,6 +57,7 @@ Example configuration
             'myDispatchListener' => 'Application\Listener\DispatchListener',
         ),
     ),
+
 
 ```module/Application/src/Application/Listener/DispatchListener.php```
 
