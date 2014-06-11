@@ -2,6 +2,7 @@
 namespace EventDispatcher\EventManager;
 
 use Zend\EventManager\EventManagerInterface;
+use Zend\EventManager\EventInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Mvc\MvcEvent;
 
@@ -33,9 +34,9 @@ class Dispatcher
             }
             
             $sm = $this->sm;
-            $eventManager->attach($eventName, function () use ($sm, $serviceName, $eventManager) {
+            $eventManager->attach($eventName, function (EventInterface $e) use ($sm, $serviceName) {
                 $listener = $sm->get($serviceName);
-                return $listener->onEvent($eventManager);
+                return $listener->onEvent($e);
             }, $priority);
         }
     }
