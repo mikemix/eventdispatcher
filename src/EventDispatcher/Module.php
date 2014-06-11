@@ -12,7 +12,7 @@ class Module
         $sm           = $app->getServiceManager();
 
         $dispatcher = $sm->get('mikemix.dispatcher');
-        $eventManager->attachAggregate($dispatcher);
+        $dispatcher->attachListeners($eventManager);
     }
 
     public function getServiceConfig()
