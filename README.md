@@ -1,6 +1,9 @@
 EventDispatcher
 ===============
 
+This module is old, crappy and unmaintained, so please don't use it :)
+======================================================================
+
 Easily attach listeners to ZF2's MVC events.
 
 Installation
